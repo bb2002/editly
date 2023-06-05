@@ -519,7 +519,7 @@ declare namespace Editly {
 	
 		/**
 		 * Text size.
-		 * Defaults to 'Math.round(Math.min(width, height) * 0.1)'
+		 * Defaults to '0.1'
 		 */
 		fontSize?: number;
 	

@@ -270,11 +270,15 @@ export async function titleFrameSource({ width, height, params }) {
     position = "center",
     zoomDirection = "in",
     zoomAmount = 0.2,
-    fontSize = Math.round(Math.min(width, height) * 0.1),
+    fontSize = 0.1,
   } = params;
 
   async function onRender(progress, canvas) {
     const scaleFactor = getZoomParams({ progress, zoomDirection, zoomAmount });
+
+    const min = Math.min(width, height);
+
+    const pixelFontSize = Math.round(min * fontSize);
 
     const translationParams = getTranslationParams({
       progress,
@@ -285,7 +289,7 @@ export async function titleFrameSource({ width, height, params }) {
     const textBox = new fabric.Textbox(text, {
       fill: textColor,
       fontFamily,
-      fontSize,
+      fontSize: pixelFontSize,
       textAlign: "center",
       width: width * 0.8,
     });
