@@ -271,6 +271,7 @@ export async function titleFrameSource({ width, height, params }) {
     zoomDirection = "in",
     zoomAmount = 0.2,
     fontSize = 0.1,
+    containerWidth = 0.8,
   } = params;
 
   async function onRender(progress, canvas) {
@@ -291,7 +292,7 @@ export async function titleFrameSource({ width, height, params }) {
       fontFamily,
       fontSize: pixelFontSize,
       textAlign: "center",
-      width: width * 0.8,
+      width: width * containerWidth,
     });
 
     // We need the text as an image in order to scale it

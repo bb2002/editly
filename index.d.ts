@@ -533,6 +533,11 @@ declare namespace Editly {
 		 * Position.
 		 */
 		position?: Position;
+
+		/**
+		 * Container Width
+		 */
+		containerWidth?: number;
 	  }
 
 	interface SubtitleLayer extends BaseLayer {
