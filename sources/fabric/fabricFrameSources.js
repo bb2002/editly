@@ -263,31 +263,41 @@ export async function imageOverlayFrameSource({ params, width, height }) {
 }
 
 export async function titleFrameSource({ width, height, params }) {
-  const { text, textColor = '#ffffff', fontFamily = defaultFontFamily, position = 'center', zoomDirection = 'in', zoomAmount = 0.2 } = params;
+  const {
+    text,
+    textColor = "#ffffff",
+    fontFamily = defaultFontFamily,
+    position = "center",
+    zoomDirection = "in",
+    zoomAmount = 0.2,
+    fontSize = Math.round(Math.min(width, height) * 0.1),
+  } = params;
 
   async function onRender(progress, canvas) {
-    // console.log('progress', progress);
-
-    const min = Math.min(width, height);
-
-    const fontSize = Math.round(min * 0.1);
-
     const scaleFactor = getZoomParams({ progress, zoomDirection, zoomAmount });
 
-    const translationParams = getTranslationParams({ progress, zoomDirection, zoomAmount });
+    const translationParams = getTranslationParams({
+      progress,
+      zoomDirection,
+      zoomAmount,
+    });
 
     const textBox = new fabric.Textbox(text, {
       fill: textColor,
       fontFamily,
       fontSize,
-      textAlign: 'center',
+      textAlign: "center",
       width: width * 0.8,
     });
 
     // We need the text as an image in order to scale it
     const textImage = await new Promise((r) => textBox.cloneAsImage(r));
 
-    const { left, top, originX, originY } = getPositionProps({ position, width, height });
+    const { left, top, originX, originY } = getPositionProps({
+      position,
+      width,
+      height,
+    });
 
     textImage.set({
       originX,

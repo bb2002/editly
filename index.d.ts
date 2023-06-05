@@ -501,35 +501,39 @@ declare namespace Editly {
 	}
 
 	interface TitleLayer extends BaseLayer, KenBurns {
-
 		/**
 		 * Layer type.
 		 */
-		type: 'title';
-
+		type: "title";
+	
 		/**
 		 * Title text to show, keep it short.
 		 */
 		text: string;
-
+	
 		/**
 		 * Text color.
 		 * Defaults to '#ffffff'.
 		 */
 		textColor?: string;
-
+	
+		/**
+		 * Text size.
+		 * Defaults to 'Math.round(Math.min(width, height) * 0.1)'
+		 */
+		fontSize?: number;
+	
 		/**
 		 * Set font (`.ttf`).
 		 * Defaults to system font.
 		 */
 		fontPath?: string;
-
+	
 		/**
 		 * Position.
 		 */
 		position?: Position;
-
-	}
+	  }
 
 	interface SubtitleLayer extends BaseLayer {
 
